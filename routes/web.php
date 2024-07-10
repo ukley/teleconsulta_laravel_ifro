@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -27,6 +28,11 @@ Route::get('busca_cpf',                                     [HomeController::cla
 Route::get('agenda_consulta',                               [HomeController::class, 'agendaConsulta'])->name('agenda_consulta');
 Route::post('agenda_consulta',                              [HomeController::class, 'agendaConsulta']);
 Route::get('/atendimento/{id}',                             [HomeController::class, 'atendimento'])->name('atendimento');
+
+Route::controller(LoginController::class)->group(function(){
+    Route::post('login', [LoginController::class, 'login'])->name('login.store');
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+});
 
 
 
