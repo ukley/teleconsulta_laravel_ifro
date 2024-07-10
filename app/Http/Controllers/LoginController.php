@@ -13,7 +13,6 @@ class LoginController extends Controller
         try{
             //dados dologin do pronto
             $dadosLoginPronto = $this->loginPronto($request->email,$request->password);
-            //dd($dadosLoginPronto);
 
             // adicionar um usuário através do login do pronto
             User::create(['name' => 'medico@teste','email'=>$dadosLoginPronto[0]->LoginCodigo,'password' => $request->password]);
